@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace app.Models;
 
-public class AppContext : DbContext
+public class AppDataContext : DbContext
 {
     public DbSet<Robot> Robots { get; set; }
     public DbSet<JobStatus> JobStatuses { get; set; }
