@@ -11,10 +11,12 @@
   <ItemGroup>
     <None Remove="export_notes_white.png" />
     <None Remove="robot_white.png" />
+    <None Remove="Views\robot_1_black.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.12.0" />
+    <PackageReference Include="Caliburn.Micro" Version="4.0.212" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,6 +28,7 @@
   <ItemGroup>
     <Resource Include="export_notes_white.png" />
     <Resource Include="robot_white.png" />
+    <Resource Include="Views\robot_1_black.png" />
   </ItemGroup>
 
 </Project>

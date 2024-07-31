@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace app.Models;
 
-public class Position
+public class StatusModel
 {
     public int Id { get; set; }
     public required string Name { get; set; }

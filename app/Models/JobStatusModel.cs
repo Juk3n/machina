@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace app.Models;
 
-public class LoadInfo
+public class JobStatusModel
 {
     public int Id { get; set; }
     public required string Name { get; set; }
