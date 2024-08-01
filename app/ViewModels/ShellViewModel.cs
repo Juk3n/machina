@@ -39,21 +39,22 @@ public class ShellViewModel : Screen
             FilteredRobots = new BindableCollection<RobotModel>(RobotFilter.FilterRobots(Robots, _filteredRobot.Name));    
         } 
     }
-
-
-
     
     public ShellViewModel()
     {
         _robotRepository = new TestRobotRepository();
 
-        Robots = new BindableCollection<RobotModel>(_robotRepository.GetAllRobots());
-
         FilterOptions = new BindableCollection<FilterOption>();
         FilterOptions.Add(new FilterOption("Wszystkie"));
+        FilteredRobot = FilterOptions.First();
+    }
 
-        FilterOptions.AddRange(Robots.Select(x => new FilterOption(x.Name)));
-        FilteredRobot = FilterOptions.ElementAt(0);
+    public void LoadRobotData()
+    {
+        Robots = new BindableCollection<RobotModel>(_robotRepository.GetAllRobots());
+        if (FilterOptions.ToArray().Length < 2)
+            FilterOptions.AddRange(Robots.Select(x => new FilterOption(x.Name)));
+        FilteredRobot = FilterOptions.First();
     }
 }
 
