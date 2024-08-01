@@ -1,5 +1,6 @@
 ﻿using app.Data.Repositories;
 using app.Models;
+using app.Utilities;
 using Caliburn.Micro;
 using Microsoft.Identity.Client;
 using System;
@@ -12,6 +13,7 @@ namespace app.ViewModels;
 
 public class ShellViewModel : Screen
 {
+    private IRobotRepository _robotRepository;
     private FilterOption _filteredRobot;
     private BindableCollection<RobotModel>? _filteredRobots;
     public BindableCollection<RobotModel>? Robots { get; set; }
@@ -34,21 +36,13 @@ public class ShellViewModel : Screen
         {
             _filteredRobot = value;
             NotifyOfPropertyChange(() => FilteredRobot);
-            FilterRobots();    
+            FilteredRobots = RobotFilter.FilterRobots(Robots, _filteredRobot.Name);    
         } 
     }
 
-    private void FilterRobots()
-    {
-        if (Robots != null)
-            if (_filteredRobot.Name == "Wszystkie")
-                FilteredRobots = new BindableCollection<RobotModel>(Robots);
-            else
-                FilteredRobots = new BindableCollection<RobotModel>(Robots.Where(x => x.Name == _filteredRobot.Name));
 
-    }
 
-    private IRobotRepository _robotRepository;
+    
     public ShellViewModel()
     {
         _robotRepository = new TestRobotRepository();
