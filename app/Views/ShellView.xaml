@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="800">
+        Title="ShellView" Height="450" Width="1100">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -61,26 +61,57 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1,1,1,1" Margin="10,10,10,10" Width="300" Height="100">
+                        <Border BorderBrush="#FFDBDBDB" BorderThickness="1,1,1,1" Margin="10,10,10,10" MinWidth="460" MinHeight="120" CornerRadius="2,2,2,2">
                             <StackPanel Orientation="Horizontal">
                                 <!-- First Column -->
                                 <StackPanel Orientation="Vertical" Margin="10,10,10,10" VerticalAlignment="Center">
                                     <Image HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="35" Source="/Views/robot_1_black.png"/>
-                                    <TextBlock>Chiron</TextBlock>
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
                                 </StackPanel>
                                 
                                 <!-- Second Column -->
                                 <StackPanel Orientation="Vertical" Margin="10,10,10,10" VerticalAlignment="Center">
-                                    <TextBlock>Bateria: 70%</TextBlock>
-                                    <TextBlock>Lokalizacja: USM 201</TextBlock>
-                                    <TextBlock>Pozycja: Bezpieczna</TextBlock>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                                        <TextBlock Text="Bateria: "></TextBlock>
+                                        <Image Height="20" Width="20" Margin="0,0,10,0"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Source="/Views/battery_4_black.png"/>
+                                        <TextBlock Text="{Binding Battery}"></TextBlock>
+                                        <TextBlock Text="%"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                                        <TextBlock Text="Lokalizacja:  "></TextBlock>
+                                        <TextBlock Text="{Binding Localization.Name}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                                        <TextBlock Text="Pozycja: "></TextBlock>
+                                        <Image Height="20" Width="20" Margin="0,0,10,0"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Source="/Views/shield_with_heart.png"/>
+                                        <TextBlock Text="{Binding Position.Name}"></TextBlock>
+                                    </StackPanel>
                                 </StackPanel>
                                 
                                 <!-- Third Column -->
                                 <StackPanel Orientation="Vertical" Margin="10,10,10,10" VerticalAlignment="Center">
-                                    <TextBlock>Dostepny</TextBlock>
-                                    <TextBlock>(Dostepny do pracy)</TextBlock>
-                                    <TextBlock>W trakcie akcji</TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="20" Width="20" Margin="0,0,10,0"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Source="/Views/check.png"/>
+                                        <TextBlock Text="{Binding Status.Name}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="20" Width="20" Margin="0,0,10,0"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Source="/Views/omron_black.png"/>
+                                        <TextBlock Text="{Binding LoadInfo.Name}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="20" Width="20" Margin="0,0,10,0"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Source="/Views/fanuc_black.png"/>
+                                        <TextBlock Text="{Binding JobStatus.Name}"></TextBlock>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                         </Border>

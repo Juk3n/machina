@@ -8,6 +8,12 @@ namespace app.Models;
 
 public class LocalizationModel
 {
+    public LocalizationModel(int id, string name)
+    {
+        Id = id;
+        Name = name;
+    }
+
     public int Id { get; set; }
-    public required string Name { get; set; }
+    public string Name { get; set; }
 }

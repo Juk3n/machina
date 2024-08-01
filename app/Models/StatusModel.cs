@@ -8,6 +8,31 @@ namespace app.Models;
 
 public class StatusModel
 {
+    public StatusModel(int id, string name)
+    {
+        Id = id;
+        Name = name;
+    }
+
     public int Id { get; set; }
-    public required string Name { get; set; }
+
+    private string? _name;
+
+    public string Name
+    {
+        get {
+            if (_name == "working")
+                return "W trakcie akcji";
+            else if (_name == "busy")
+                return "Niedostepny zajety";
+            else if (_name == "available")
+                return "Dostepny";
+            else if (_name == "error")
+                return "Niedostepny Potrzebny asystent";
+            else
+                return _name;
+        }
+        set { _name = value; }
+    }
+
 }

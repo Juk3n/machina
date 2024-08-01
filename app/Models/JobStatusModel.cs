@@ -8,6 +8,23 @@ namespace app.Models;
 
 public class JobStatusModel
 {
+    public JobStatusModel(int id, string name)
+    {
+        Id = id;
+        Name = name;
+    }
+
     public int Id { get; set; }
-    public required string Name { get; set; }
+    private string _name;
+    public string Name
+    {
+        get
+        {
+            if (_name == "working")
+                return "W trakcie akcji";
+            else
+                return _name;
+        }
+        set { _name = value; }
+    }
 }
