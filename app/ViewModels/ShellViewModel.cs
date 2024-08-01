@@ -12,30 +12,64 @@ namespace app.ViewModels;
 
 public class ShellViewModel : Screen
 {
+    private FilterOption _filteredRobot;
+    private BindableCollection<RobotModel>? _filteredRobots;
     public BindableCollection<RobotModel>? Robots { get; set; }
-    public BindableCollection<FilterType> RobotFilters { get; set; }
+    public BindableCollection<RobotModel>? FilteredRobots { 
+        get
+        {
+            return _filteredRobots;
+        }
+        set
+        {
+            _filteredRobots = value;
+            NotifyOfPropertyChange(() => FilteredRobots);
+        }
+    }
+
+    public BindableCollection<FilterOption> FilterOptions { get; set; }
+    public FilterOption FilteredRobot { 
+        get => _filteredRobot; 
+        set
+        {
+            _filteredRobot = value;
+            NotifyOfPropertyChange(() => FilteredRobot);
+            FilterRobots();    
+        } 
+    }
+
+    private void FilterRobots()
+    {
+        if (Robots != null)
+            if (_filteredRobot.Name == "Wszystkie")
+                FilteredRobots = new BindableCollection<RobotModel>(Robots);
+            else
+                FilteredRobots = new BindableCollection<RobotModel>(Robots.Where(x => x.Name == _filteredRobot.Name));
+
+    }
 
     private IRobotRepository _robotRepository;
     public ShellViewModel()
     {
         _robotRepository = new TestRobotRepository();
-        RobotFilters = new BindableCollection<FilterType>();
-        RobotFilters.Add(new FilterType("Chiron"));
-        RobotFilters.Add(new FilterType("Robot 1"));
-        RobotFilters.Add(new FilterType("Robot 2"));
-        RobotFilters.Add(new FilterType("Robot 3"));
 
         Robots = new BindableCollection<RobotModel>(_robotRepository.GetAllRobots());
 
+        FilterOptions = new BindableCollection<FilterOption>();
+        FilterOptions.Add(new FilterOption("Wszystkie"));
+
+        FilterOptions.AddRange(Robots.Select(x => new FilterOption(x.Name)));
+        FilteredRobot = FilterOptions.ElementAt(0);
     }
 }
 
-public class FilterType
+public class FilterOption
 {
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
-    public FilterType(string? name)
+    public FilterOption(string name)
     {
         Name = name;
     }
+
 }

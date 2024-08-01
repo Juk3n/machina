@@ -11,6 +11,8 @@
   <ItemGroup>
     <None Remove="export_notes_white.png" />
     <None Remove="robot_white.png" />
+    <None Remove="Views\arrow_left.png" />
+    <None Remove="Views\arrow_right.png" />
     <None Remove="Views\battery_4_black.png" />
     <None Remove="Views\check.png" />
     <None Remove="Views\fanuc_black.png" />
@@ -33,6 +35,8 @@
   <ItemGroup>
     <Resource Include="export_notes_white.png" />
     <Resource Include="robot_white.png" />
+    <Resource Include="Views\arrow_left.png" />
+    <Resource Include="Views\arrow_right.png" />
     <Resource Include="Views\battery_4_black.png" />
     <Resource Include="Views\check.png" />
     <Resource Include="Views\fanuc_black.png" />
