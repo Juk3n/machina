@@ -36,7 +36,7 @@ public class ShellViewModel : Screen
         {
             _filteredRobot = value;
             NotifyOfPropertyChange(() => FilteredRobot);
-            FilteredRobots = RobotFilter.FilterRobots(Robots, _filteredRobot.Name);    
+            FilteredRobots = new BindableCollection<RobotModel>(RobotFilter.FilterRobots(Robots, _filteredRobot.Name));    
         } 
     }
 

@@ -10,14 +10,14 @@ namespace app.Utilities;
 
 public static class RobotFilter
 {
-    public static BindableCollection<RobotModel> FilterRobots(BindableCollection<RobotModel>? robots, string filterValue)
+    public static IEnumerable<RobotModel> FilterRobots(IEnumerable<RobotModel>? robots, string filterValue)
     {
-        BindableCollection<RobotModel> filteredRobots = new BindableCollection<RobotModel>();
+        IEnumerable<RobotModel> filteredRobots = new List<RobotModel>();
         if (robots != null)
             if (filterValue == "Wszystkie")
-                filteredRobots = new BindableCollection<RobotModel>(robots);
+                filteredRobots = new List<RobotModel>(robots);
             else
-                filteredRobots = new BindableCollection<RobotModel>(robots.Where(x => x.Name == filterValue));
+                filteredRobots = new List<RobotModel>(robots.Where(x => x.Name == filterValue));
         return filteredRobots;
     }
 }
