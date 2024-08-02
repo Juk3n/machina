@@ -42,11 +42,11 @@ public class ShellViewModel : Screen
     
     public ShellViewModel()
     {
-        //_robotRepository = new TestRobotRepository();
+        _robotRepository = new RobotRepository(new AppDataContext());
 
-        //FilterOptions = new BindableCollection<FilterOption>();
-        //FilterOptions.Add(new FilterOption("Wszystkie"));
-        //FilteredRobot = FilterOptions.First();
+        FilterOptions = new BindableCollection<FilterOption>();
+        FilterOptions.Add(new FilterOption("Wszystkie"));
+        FilteredRobot = FilterOptions.First();
     }
 
     public async void LoadRobotData()

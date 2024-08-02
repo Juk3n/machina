@@ -7,12 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace app.Data.Repositories;
-
-public class TestRobotRepository : IRobotRepository
+public class RobotRepository : IRobotRepository
 {
-    private AppDataTestContext _context;
+    private AppDataContext _context;
 
-    public TestRobotRepository(AppDataTestContext context)
+    public RobotRepository(AppDataContext context)
     {
         _context = context;
     }
