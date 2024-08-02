@@ -8,14 +8,7 @@ namespace app.Models;
 
 public class JobStatusModel
 {
-    public JobStatusModel(int id, string name)
-    {
-        Id = id;
-        Name = name;
-    }
-
     public int Id { get; set; }
-    private string _name;
     public string Name
     {
         get
@@ -27,4 +20,6 @@ public class JobStatusModel
         }
         set { _name = value; }
     }
+
+    private string _name = "";
 }

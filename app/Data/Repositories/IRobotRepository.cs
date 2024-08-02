@@ -10,5 +10,4 @@ namespace app.Data.Repositories;
 public interface IRobotRepository
 {
     Task<IEnumerable<RobotModel>> GetAllRobotsAsync();
-    IEnumerable<RobotModel> GetAllRobots();
 }

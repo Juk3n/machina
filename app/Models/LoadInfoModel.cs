@@ -8,17 +8,7 @@ namespace app.Models;
 
 public class LoadInfoModel
 {
-    private string _name;
-
-    public LoadInfoModel(int id, string name)
-    {
-        Id = id;
-        Name = name;
-    }
-
     public int Id { get; set; }
-    
-
     public string Name
     {
         get
@@ -34,4 +24,6 @@ public class LoadInfoModel
         }
         set { _name = value; }
     }
+
+    private string _name = "";
 }

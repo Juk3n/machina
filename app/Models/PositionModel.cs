@@ -8,15 +8,7 @@ namespace app.Models;
 
 public class PositionModel
 {
-    public PositionModel(int id, string name)
-    {
-        Id = id;
-        Name = name;
-    }
-
     public int Id { get; set; }
-
-    private string _name;
     public string Name
     {
         get {
@@ -27,4 +19,6 @@ public class PositionModel
         }
         set { _name = value; }
     }
+
+    private string _name = "";
 }
