@@ -11,9 +11,9 @@ public class RobotModel
     public int Id { get; set; }
     public string Name { get; set; }
     public int Battery { get; set; }
-    public LocalizationModel Localization { get; set; }
-    public PositionModel Position { get; set; }
-    public StatusModel Status { get; set; }
-    public LoadInfoModel LoadInfo { get; set; }
-    public JobStatusModel JobStatus { get; set; }
+    public required LocalizationModel Localization { get; set; }
+    public required PositionModel Position { get; set; }
+    public required StatusModel Status { get; set; }
+    public required LoadInfoModel LoadInfo { get; set; }
+    public required JobStatusModel JobStatus { get; set; }
 }
